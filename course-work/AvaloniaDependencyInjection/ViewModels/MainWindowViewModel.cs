@@ -1,6 +1,6 @@
 ﻿namespace AvaloniaDependencyInjection.ViewModels;
 
-public partial class MainWindowViewModel : ViewModelBase
+public partial class MainWindowViewModel(TodoListViewModel todoListViewModel) : ViewModelBase
 {
-    public string Greeting { get; } = "Welcome to Avalonia!";
+    public TodoListViewModel TodoListViewModel { get; } = todoListViewModel;
 }

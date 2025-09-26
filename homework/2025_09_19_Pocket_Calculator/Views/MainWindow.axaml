@@ -12,9 +12,7 @@
     <Grid Margin="32" ColumnDefinitions="*,*,*,*" RowDefinitions="Auto,*,*,*,*">
         <!-- Display -->
         <Border Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" BorderBrush="Gray" BorderThickness="3" CornerRadius="12" Margin="0,0,0,16">
-            <ScrollViewer Name="DisplayScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                <TextBlock Text="{Binding Result}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="48" FontWeight="Bold" Margin="16"/>
-            </ScrollViewer>
+            <TextBlock Text="{Binding Result}" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="48" FontWeight="Bold" Margin="16"/>
         </Border>
         <!-- Row 1 -->
         <Button Grid.Column="0" Grid.Row="1" Command="{Binding AddToDisplayCommand}" CommandParameter="7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" FontWeight="Bold">7</Button>

@@ -6,6 +6,7 @@ using System.Linq;
 using Avalonia.Markup.Xaml;
 using AvaloniaDependencyInjection.ViewModels;
 using AvaloniaDependencyInjection.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AvaloniaDependencyInjection;
 
@@ -23,10 +24,18 @@ public partial class App : Application
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
             // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
             DisableAvaloniaDataAnnotationValidation();
-            desktop.MainWindow = new MainWindow
-            {
-                DataContext = new MainWindowViewModel(),
-            };
+			
+            var collection = new ServiceCollection();
+            collection.AddTransient<MainWindowViewModel>();
+            collection.AddTransient<MainWindow>();
+            collection.AddTransient<TodoListView>();
+            collection.AddTransient<TodoListViewModel>();
+            // ... add additional services here if needed.
+            // collection.AddTransient<IMyService, MyService>();
+
+
+            var services = collection.BuildServiceProvider();
+            desktop.MainWindow = services.GetRequiredService<MainWindow>();
         }
 
         base.OnFrameworkInitializationCompleted();
