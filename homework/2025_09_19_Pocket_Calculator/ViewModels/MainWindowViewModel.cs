@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Threading.Tasks;
 using _2025_09_19_Pocket_Calculator.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -36,6 +37,18 @@ public partial class MainWindowViewModel : ViewModelBase
         {
             var box = MessageBoxManager.GetMessageBoxStandard("Error",
                 "Division by 0 is not allowed!",
+                ButtonEnum.Ok);
+            Result = "0";
+
+            // ShowAsync displays the message box, choosing the presentation style—popup or window—according to the application type:
+            // - SingleViewApplicationLifetime (used in mobile or browser environments): shows as a popup
+            // - ClassicDesktopStyleApplicationLifetime (desktop apps): shows as a window
+            await box.ShowAsync();
+        }
+        catch (SyntaxErrorException)
+        {
+            var box = MessageBoxManager.GetMessageBoxStandard("Error",
+                "Syntax error in the expression!",
                 ButtonEnum.Ok);
             Result = "0";
 
