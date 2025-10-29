@@ -16,6 +16,7 @@
                     <StackPanel Orientation="Horizontal">
                         <CheckBox IsChecked="{Binding IsDone}" Margin="0,0,8,0"></CheckBox>
                         <TextBlock Text="{Binding Title}"></TextBlock>
+                        <Button/>
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.DataTemplates>
